@@ -23,14 +23,14 @@ int main()
 				c[s[i] - 'a']++;
 				c[t[i] - 'a']++;
 				count++;
-            }
+            		}
 		}
 		for(int i = 0; i < 26; i++)
 		{
 			if(c[i] % 2 <= 1)
 				count = count - c[i] / 2;
 				swap = swap + c[i] / 2;
-        }
+        	}
 		cout << endl;
 		if(count <= 1 && swap <= 2)
 			cout << "YES" << endl;

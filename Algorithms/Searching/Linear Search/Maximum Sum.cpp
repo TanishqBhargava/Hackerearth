@@ -24,5 +24,5 @@ int main()
         cout << sum << " " << cnt << endl;
     else 
         cout << mx << " " << 1 << endl;
-  return 0;
+    return 0;
 }

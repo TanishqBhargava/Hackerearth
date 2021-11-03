@@ -5,38 +5,30 @@
 //Tanishq Bhargava
 #include<bits/stdc++.h>
 using namespace std;
- 
-long long int minn(long long int a, long long int b)
-{
-	  return (a < b) ? a : b;
-}
 
-int main()
+int main() 
 {
-	  ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-	  int t; 
-	  cin >> t;
-	  while(t--)
-	  {
-		    int n; 
-		    cin >> n;
-		    long long int arr[n], ans = 0;
-		    for(int i = 0; i < n; i++) 
-			      cin >> arr[i];
-		    sort(arr, arr + n);
-		    for(int i = 0; i < n; i++)
-		    {
-			      int j = i,count = 0;
-			      while(arr[j] == arr[i] && j < n) 
-			      {
-				        count++; 
-				        j++;
-			      }
-			      if(count != arr[i])
-				        ans += minn(count, abs(arr[i] - count));
-			      i = j - 1;
-		    }
-		    cout << ans << endl;
-	  }
-	  return 0;
+    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    long long int t, n, x; 
+    cin >> t; 
+    while(t--)
+    {
+	cin >> n;
+       	map<long long int, long long int>mp;
+       	for(int i = 0; i < n; i++)
+	{
+            cin >> x;
+            mp[x]++;
+       	}
+       	long long int ans = 0;
+       	for(auto it:mp)
+	{
+            if(it.second >= it.first) 
+		ans += (it.second - it.first);
+            else 
+	  	ans += min(it.first - it.second, it.second);
+       	}
+       	cout << ans << endl;
+    }
+    return 0;
 }

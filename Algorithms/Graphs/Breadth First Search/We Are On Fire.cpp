@@ -48,7 +48,7 @@ int main()
 		if(adj[i - 1][j - 1] == 1)
 			dfs(adj, no, i - 1, j - 1);
 		ans -= no;
-		cout << ans << endl;
+		cout << ans << "\n";
 	}
 	return 0;
 }

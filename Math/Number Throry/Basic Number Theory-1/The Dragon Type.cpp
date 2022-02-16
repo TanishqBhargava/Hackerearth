@@ -5,56 +5,41 @@
 //Tanishq Bhargava
 #include <bits/stdc++.h>
 using namespace std;
-int p;
+int cnt[5000010], inv[5000010];
 
-long long int bpow(long long int x, long long int n)
+int modpow(long long int a, long long int b, long long int mod)
 {
-    long long int ans = 1;
-    while(n > 0)
+    long long int res = 1;
+    while(b > 0)
     {
-        if(n & 1) 
-            ans *= x;
-        x *= x;
-        x %= p;
-        ans %= p;
-        n /= 2;
+        if(b & 1)
+            res = (res * a) % mod;
+        a = (a * a) % mod;
+        b /= 2;
     }
-    return ans;
+    return res % mod;
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    int N;
-    set<int>S;
-    cin >> N >> p;
-    map<int, int>M;
-    long long int ans = 0, A[200011];
-    for(int i = 0; i < N; i++)
+  	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    int n, p;
+   	long long int ans = 0, x;
+   	cin >> n >> p;
+   	for(int i = 0; i < n; i++)
     {
-        cin >> A[i];
-        A[i] %= p;
-        M[A[i]]++;
-        S.insert(A[i]);
-    }
-    for(map<int,int>::iterator it = M.begin(); it != M.end(); it++)
+ 		cin >> x; 
+        x %= p; 
+        cnt[x]++; 
+        inv[x] = modpow(x, p - 2, p);
+  	}
+   	for(int i = 1; i < 100000; i++)
     {
-        pair<long long int, long long int> x = *it;
-        if(x.first == 0) 
-            continue;
-        int f1 = x.first;
-        int f2 = bpow(x.first, p - 2);
-        if(f1 != f2)
-        {
-            if(S.count(f1) and S.count(f2))
-            {
-                if(f1 < f2) 
-                    ans += max(M[f1], M[f2]);
-            }
-            else
-                ans += x.second;       
-        }
-    }
-    ans += M[0];
-    cout << ans;
+  		if(cnt[inv[i]] == 0) 
+            ans += cnt[i];
+   		else if(inv[i] > i) 
+            ans += max(cnt[i], cnt[inv[i]]);
+   	}
+  	cout << ans + cnt[0] << endl;
+   	return 0;
 }

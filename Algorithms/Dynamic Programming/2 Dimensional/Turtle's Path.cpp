@@ -26,7 +26,7 @@ void dfs(int i, int j, int k)
  
 int main()
 {
-	ios_base::sync_with_stdio(false); cin.tie(NULL); ccout.tie(NULL);
+	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
     cin >> n >> m;
     for(int i = 2; i * i <= 100005; i++)
     {

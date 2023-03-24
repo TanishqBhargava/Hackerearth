@@ -37,7 +37,7 @@ vector<int> solution(int N, vector<vector<int>> &units, int K, vector<vector<int
  
 int main() 
 {
-    ios_base::sync_with(stdio); cin.tie(NULL); cout.tie(NULL);
+    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
     int N, K;
     cin >> N;
     vector<vector<int>> units(N, vector<int>(2)), requests(K, vector<int>(2));
